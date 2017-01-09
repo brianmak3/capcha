@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial scale=1">
+    <title>CasualDispatch.com - Casual Dispatch Port of Los Angeles/Long Beach Casual Hall Tapeline Information and Updates</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
+    <style>
+        body {
+            padding: 60px;
+            font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+        }
+        a {
+            color: #00b7ff;
+        }
+        .style1 {
+            color: #FF0000;
+            font-weight: bold;
+        }
+
+        .style2 {
+            color: #0066CC;
+        }
+
+        #info {
+
+            height:100px;
+
+        }
+
+        #info div span{
+            position:absolute;
+            bottom:0;
+            right:0;
+        }
+        .testfoot {
+            color: #CCCCCC;
+            font-size:9px;
+            text-align: center;
+            background-position: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 5px;
+            padding-left: 5px;
+            margin-top: 0px;
+        }
+
+        .table th, .table td {
+            border-top: none !important;
+        }
+
+
+
+        <!--
+        .style1 {
+            color: #FF0000;
+            font-weight: bold;
+        }
+        .style2 {color: #0066CC}
+        .testfoot {
+            color: #CCCCCC;
+            font-size:9px;
+            text-align: center;
+            background-position: center;
+            vertical-align: middle;
+            padding-top: 10px;
+            padding-bottom: 5px;
+        }
+        .btnpad {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .bottomspace {
+            padding-top: 100px;
+
+        }
+        .hourssummary {
+
+            background-color:#66CC00;
+            color:#FFFFFF;
+            font-size:14px;
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            margin-right:10px;
+            padding: 10px;
+            border-radius: 25px;
+        }
+        .pad {
+
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        th {
+
+            font-size:14px;
+            font-weight:bold;
+            color:#003366;}
+
+        rounded {
+            border-radius: 25px;}
+
+        @media only screen and (max-width: 768px) {
+
+            container {padding:20px;}
+        }
+    </style>
+</head>
+<body >
+<!--Begin Navbar Header-->
+    <% include templates/header.ejs %>
+<!--main container-->
+<div class="col-lg-12 col-xs-12"></div>
+<div class="container">
+
+    <div class="row" style="margin-left:10px;">
+        <div class="col-xs-10 pad">
+            <a href="/shiftEntry" class="btn btn-sm btn-primary" style="margin-bottom:10px;">Enter a Shift</a> |
+            <a href="#1" class="btn btn-sm btn-info" style="margin-bottom: 10px">Find a Shift</a> |
+            <a href="#" class="btn btn-sm btn-danger" style="margin-bottom:10px;">Record a Flop</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 hourssummary">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Hours Summary</h3><hr>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Total Hours:</th>
+                            <td><span class="badge">0</span></td>
+                        </tr>
+                        <tr>
+                            <th>Last 7 days:</th>
+                            <td><span class="badge"></span></td>
+                        </tr>
+                        <tr>
+                            <th>Past Month:</th>
+                            <td><span class="badge"></span></td>
+                        </tr>
+                        <tr>
+                            <th>Past Year:</th>
+                            <td><span class="badge"></span></td>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <h3>Badges</h3><hr><table>
+
+                        <thead><tr>
+                            <th>1000+</th>
+                            <th>2000+</th>
+                            <th>3000+</th>
+                            <th>TOP PAY</th>
+                        </tr>
+                        </thead><thead>
+                        </thead><tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="table-responsive col-xs-12"><a name="1"></a>
+            <table border="1" align="center" class="table table-hover table-striped table-bordered">
+                <thead>
+                <tr class="danger h4">
+                    <th id="shiftdate">Shift Date</th>
+                    <th id="daynight">Time/Job</th>
+                    <th id="hours">Hours</th>
+                    <th id="edit">Edit</th>
+                    <th id="delete">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="warning h5">&nbsp;</td>
+                    <td>&nbsp;<hr> </td>
+                    <td>&nbsp; </td>
+                    <td><a href="/shift_update_form" class="glyphicon glyphicon-edit"></a></td>
+                    <td><a href="shiftdelete.php?shiftID=" class="glyphicon glyphicon-remove" onclick="return confirm('Are you sure you want to delete?')"></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="float:left">
+                <table border="0">
+                    <tbody><tr>
+                        <td>                    </td>
+                        <td>                    </td>
+                        <td>                    </td>
+                        <td>                    </td>
+                    </tr>
+                    </tbody></table>
+
+            </div>
+            <div class="col-md-2" style="float:right">Records 1 to 0 of 0</div>
+        </div>
+        <p align="center" style="margin-top: 50px">Tapeline #<br><br/>
+            <a href="tel:3105499446" class="h3" style="color: #006699">310-549-9446</a>
+        </p>
+
+
+
+
+</div>
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class=" testfoot">
+        <a class="navbar-button btn-primary btn btn-lg glyphicon glyphicon-earphone btnpad" href="tel:3105499446"></a>
+        <a class="navbar-button btn-success btn btn-lg glyphicon glyphicon-road btnpad" href="directions.php"></a>
+        <a class="navbar-button btn-warning btn btn-lg glyphicon glyphicon-user btnpad" href="phones.php"></a>
+        <a class="navbar-button btn-danger btn btn-lg glyphicon glyphicon-book btnpad" href="/users"></a>
+    </div>
+</div>
+
+</body>
+<% include templates/scripts.ejs %>
+</html>
+

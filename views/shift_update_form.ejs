@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial scale=1">
+    <title>CasualDispatch.com - Casual Dispatch Port of Los Angeles/Long Beach Casual Hall Tapeline Information and Updates</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
+    <style>
+        body {
+            padding: 20px;
+            padding-top: 65px;
+            font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+        }
+        a {
+            color: #00b7ff;
+        }
+
+        .style1 {
+            color: #0099FF;
+            font-weight: normal;
+        }
+        .style2 {
+            color: #006699;
+            font-weight: normal;
+        }
+        .style3 {
+            color: #FFFF00;
+            font-weight: normal;
+        }
+
+    </style>
+</head>
+<body >
+<!--Begin Navbar Header-->
+<% include templates/header.ejs %>
+<!--main container-->
+<form action="/shift_entry.php?" method="POST" name="form1">
+    <div class="container" style="">
+        <div class="row" align="center">
+            <div class="row" style="margin-bottom: 30px">
+                <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6">
+                    <label>Date</label><input type="text" name="dispatchDate" class="form-control" value="2017-01-03" data-date-format="yyyy/m/d" id="dp2">
+                </div>
+                <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6">
+                    <label>Dispatch:</label>
+                    <div class="form-control" id="dispatchtest"><center>
+                            <label class="radio-inline small" for="radio1">
+                                <input type="radio" id="radio1" value="DAYSIDE" checked="" name="dispatchtime"> <small>AM</small>
+                            </label>
+                            <label class="radio-inline small" for="radio2">
+                                <input type="radio" id="radio2" value="NIGHTSIDE" name="dispatchtime"> <small>PM</small>
+                            </label></center>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 30px">
+                <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6">
+                    <label>Job Type:</label>
+                    <select name="jobtype" class="form-control" id="jobtype">
+                        <option value="DA">DOCK ALOFT</option>
+                        <option value="DA YARD">DOCK ALOFT YARD</option>
+                        <option value="UTR SHIP">UTR SHIP</option>
+                        <option value="UTR DOCK">UTR DOCK</option>
+                        <option value="UTR RAILS">UTR RAILS</option>
+                        <option value="SWING">SWING</option>
+                        <option value="HATCH CLERK">HATCH CLERK</option>
+                        <option value="KEY CLERK">KEY CLERK</option>
+                        <option value="LASHING">LASHING</option>
+                        <option value="AUTOS">AUTOS</option>
+                        <option value="SAFETY TRAINING">SAFETY TRAINING</option>
+                        <option value="CL">CL</option>
+                        <option value="OTHER">OTHER</option>
+                    </select>
+                </div>
+                <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6">
+                    <label>Jobsite:</label>
+                    <select name="berth" class="form-control" id="berth">
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 30px">
+                <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6">
+                    <label>Vessel:</label><input name="ship" class="form-control" id="ship">
+                </div>
+                <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6">
+                    <label>Break:</label>
+                    <select name="break" class="form-control" id="break">
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 30px">
+                <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6">
+                    <label>Hours:</label><input name="hours" type="text" class="form-control" id="hours" size="4" maxlength="4">
+                </div>
+                <div class="col-xs-12 col-lg-5 col-md-6 col-sm-6">
+                    <label>Boss:</label><input name="boss" type="text" class="form-control" id="boss">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-lg-10 col-md-12 col-sm-12">
+                    <label>Notes:</label>
+                    <textarea name="notes" rows="5" class="form-control" id="notes" style="resize: none"></textarea>
+                </div> <br/>
+            </div>
+            <div >
+                <input  name="button" type="submit" class="btn btn-success" id="button" value="Submit" style="margin: 10px">
+                <input  name="button" type="submit" class="btn btn-warning" id="button" value="Cancel" style="margin: 10px">
+            </div>
+</form>
+<div class="col-xs-12 text-center">
+    <p>Tapeline #</p><nobr>
+        <a href="tel:3105499446" class="h3" style="color: #0099FF">310-549-9446</a>
+    </nobr>
+</div>
+</body>
+<% include templates/scripts.ejs %>
+<script>
+    function breaks() {
+        var breaking = ['8-10', '11-1', '12-2', 'SPLITS', 'E-GO', '6-8', '9-11', '10-12'];
+        for (var i = 0; i <= breaking.length; i++) {
+            $('#break').append('<option value="' + breaking[i] + '">' + breaking[i] + '</option>');
+        }
+    }breaks();
+    function Jobsite()
+    {
+        var jobsite = ['MAERSK', 'HANJIN', 'COSCO', 'ITS', 'YANG MING', 'CHINA', 'NYK', 'EVERGREEN','APL','METRO','CUT','ZIM','PST','nissan','toyota','matson','trapac'];
+        for (var i = 0; i <= jobsite.length; i++) {
+            $('#berth').append('<option value="' + jobsite[i] + '">' + jobsite[i] + '</option>');
+        }
+    }Jobsite();
+</script>
+</select>
+</html>
+

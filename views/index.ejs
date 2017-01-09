@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width = device-width, initial scale=1">
+	<title>CasualDispatch.com - Casual Dispatch Port of Los Angeles/Long Beach Casual Hall Tapeline Information and Updates</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
+	<style>
+	body {
+
+			 font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+		 }
+		a {
+			color: #00b7ff;
+		}
+		.style1 {
+			color: #FF0000;
+			font-weight: bold;
+		}
+
+		.style2 {
+			color: #0066CC;
+		}
+
+
+		#info div span{
+			position:absolute;
+			bottom:0;
+			right:0;
+		}
+		.testfoot {
+			color: #CCCCCC;
+			font-size:9px;
+			text-align: center;
+			background-position: center;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			padding-right: 5px;
+			padding-left: 5px;
+			margin-top: 0px;
+		}
+
+		.table th, .table td {
+			border-top: none !important;
+		}
+		.white {
+
+			color:#FFFFFF;
+			font-size:16px;}
+
+		.lefty{
+			text-align:left;
+			margin:0;}
+
+		.righty{
+			text-align:right;
+			vertical-align:bottom;
+			padding-top:30px;
+		}
+		.view_store{
+			padding-right: 10px;
+			padding-right: 30px;
+		}
+
+		.bluerow {
+			background: #666666;
+			color: #CCCCCC;
+			padding:5px;
+			font-size:14px;
+
+		}
+	.adpad {
+		margin:0;
+		padding-top: 5px;
+		margin-top:0;}
+	</style>
+</head>
+<body style="padding:0px">
+<!--Begin Navbar Header-->
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-header">
+		<a href="#"><img src="images/main_logo.png"></a>
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<!-- Your Sitename -->
+	</div>
+	<!--Begin Navbar Collapse -->
+	<div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav">
+			<!-- First Nav Item-->
+			<li class="dropdown active">
+				<a href="/">Home</a>
+			</li>
+			<li class="dropdown">
+				<a href="http://astore.amazon.com/casual-dispatch-20" target="_blank">STORE</a>
+			</li>
+		</ul>
+		<!--form for feeling credentials to login-->
+		<form class="form-inline">
+			<div class="input-group input-grop-xs" style="padding-top:10px;margin-bottom:10px">
+				<!--login credentials -->
+				<span class="input-group-addon" style="background-color:rgba(0,0,0,0.5);color:white;padding:2px">Username</span>
+				<input type="text" class="form-control input-sm" id="username_login" placeholder="Type your username" style="font-weight:bold;width:170px;background-color:rgba(257,257,257,0.9)">
+			</div>
+			<div class="input-group input-grop-xs" style="padding-top:10px;margin-left:5px;margin-bottom:10px">
+				<span class="input-group-addon" style="background-color:rgba(0,0,0,0.5);color:white;padding:2px">Password</span>
+				<input type="password" class="form-control input-sm" id="password_login" placeholder="Type password" style="font-weight:bold;background-color:rgba(257,257,257,0.9);width:130px;"/>
+			</div>
+			<button type="button" id="login_btn" href="users" class="btn btn-success btn-sm" role="button" style="margin-left:5px;margin-bottom:10px;margin-top:10px">Login</button>
+			<button  type="button" class="btn btn-info btn-sm register_toggle" role="button" style="margin-left:5px;margin-bottom:10px;margin-top:10px">Register</button>
+			<button type="submit" class="btn btn-link btn-xs" role="button" style="margin-left:30px;color:	rgba(0,191,255,1);font-size:14px">Forgot Password?</button>
+		</form>
+		<div id="login_warning" style="width:100%;text-align:center;padding:5px;background-color:white;color: red;font-size: 13px;display:none">
+
+		</div>
+	</div>
+</div>
+<div class="container-fluid" id="myMod" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="padding:0px;margin-top: 50px;">
+
+	<div style="width:100%;text-align:center;padding:10px;background-color:dimgray;">
+		<span style="color:white;"><span style="color:rgba(257,257,257,0.7)"> <%= date%> </span> - Dayside</span>
+	</div>
+	<div  style="position-fixed;height:130px;background-image:url(images/hp.png);background-repeat: no-repeat;">
+		<table class="table table-condensed day" border="0" cellspacing="0">
+			<tbody><tr>
+				<td align="center" style="color:white;font-weight:bold;font-size:14px;"><small>Tapeline Count:</small></td>
+				<td align="center" style="color:white;font-weight:bold;font-size:14px;"><small>Starting on:</small></td>
+			</tr>
+			<tr>
+				<td align="center"><h2 id="example" data-html="true" data-original-title="" title="" style="color:yellow;font-size:50px;">911</h2></td>
+				<td align="center" ><h2 style="color:yellow;font-size:50px;">B4740</h2></td>
+			</tr>
+			</tbody></table>
+	</div>
+	<div  align="center" id="info">
+		<div class="col-xs-5 righty"><img src="images/crystalball.jpg" id="example2" data-html="true" data-original-title="" title=""></div>
+		<span><div class="col-xs-5 lefty h1 style4" id="ondeck"></div></span>
+		<div class="adpad col-md-12 col-sm-12 col-xs-12 col-lg-12" align="center"><p><a href="mailto:support@casualdispatch.com">
+					<input type="button" class="btn btn-lg btn-primary" value="Contact Us" style="padding-left: 50px;padding-right: 50px"></a></p>
+		</div>
+
+
+	</div>
+	<!--<div class="fb-comments fb_iframe_widget fb_iframe_widget_fluid" data-href="http://www.casualdispatch.com" data-numposts="2" align="center" data-width="100%" data-order-by="reverse_time" fb-xfbml-state="rendered"><span style="height: 518px;"><iframe id="fc26ca6483f604" name="f207deaa1872e28" scrolling="no" title="Facebook Social Plugin" class="fb_ltr fb_iframe_widget_lift" src="https://www.facebook.com/plugins/comments.php?api_key=552306801646781&amp;channel_url=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FiPrOY23SGAp.js%3Fversion%3D42%23cb%3Df231fe3ca257fec%26domain%3Dwww.casualdispatch.com%26origin%3Dhttp%253A%252F%252Fwww.casualdispatch.com%252Ff17618ee5d2e138%26relation%3Dparent.parent&amp;href=http%3A%2F%2Fwww.casualdispatch.com&amp;locale=en_US&amp;numposts=2&amp;order_by=reverse_time&amp;sdk=joey&amp;version=v2.8&amp;width=100%25" style="padding:30px; border: none; overflow: hidden; height: 518px; width: 100%;margin-bottom: 20px"></iframe></span></div>
+-->
+</div>
+
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+	<div class=" testfoot">
+
+		<a class="navbar-button btn-primary btn btn-lg glyphicon glyphicon-earphone btnpad" href="tel:3105499446"></a>
+		<a class="navbar-button btn-success btn btn-lg glyphicon glyphicon-road btnpad" href="directions.php"></a>
+		<a class="navbar-button btn-warning btn btn-lg glyphicon glyphicon-user btnpad" href="phones.php"></a>
+		<a class="navbar-button btn-danger btn btn-lg glyphicon glyphicon-book btnpad" href="timebook.php"></a>
+	</div>
+</div>
+<div class="modal fade in input_field" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="background-color:rgba(0,0,0,0.4);overflow-y:auto;display: none;">
+	<!-- Modal-dialog -->
+	<div class="modal-dialog">
+		<!-- Modal-content -->
+		<div class="modal-content">
+			<!--Modal Header -->
+			<div class="modal-header">
+				<button type="button" class="close" id="x_hide_reg">×</button>
+				<h4 class="modal-title">User Registration</h4>
+			</div>
+			<!--End Modal Header -->
+
+
+			<!-- Modal Body -->
+			<div class="modal-body" id="modal_body">
+				<span id="warning_div">Enter all the details below to register <span style="color: #FF0000">*</span></span>
+				<form method="post" action="register.php" class="register form-inline " id="register" novalidate="novalidate">
+					<br/>
+					<div class="input-group input-grop-md" style="margin-bottom:35px;margin-left:20px;">
+						<span class="input-group-addon" style="background-color:grey;color:white;padding:3px">First name</span>
+						<input type="text" class="form-control input-md input_field" id="first_name" placeholder="type first name" style="width:130px;"/>
+					</div>
+					<span class="col-lg-1"></span>
+					<div class="input-group input-grop-md"  style="margin-bottom:35px;margin-left:20px;" >
+						<span class="input-group-addon" style="background-color:grey;color:white;padding:3px">Last name</span>
+						<input type="text" class="form-control input-md input_field" id="last_name" placeholder="type last name" style="width:130px;"/>
+					</div>
+					<div class="input-group input-grop-md" style="margin-bottom:25px;margin-left:20px;">
+						<span class="input-group-addon" style="background-color:grey;color:white;padding:3px">Username</span>
+						<input type="text" class="form-control input-md input_field" id="username" placeholder="type username" style="width:130px;"/>
+					</div>
+					<span class="col-lg-1"></span>
+
+					<div class="input-group input-grop-md" style="margin-bottom:25px;margin-left:20px;">
+						<span class="input-group-addon" style="background-color:grey;color:white;padding:3px;font-size:13px">Email address</span>
+						<input type="email" class="form-control input-md input_field" id="email" placeholder="type email" style="width:160px;"/>
+					</div>
+					<div class="input-group input-grop-md" style="margin-bottom:25px;margin-left:20px;">
+						<span class="input-group-addon" style="background-color:grey;color:white;padding:3px">Work ID</span>
+						<input type="text" class="form-control input-md input_field" id="work_id" placeholder="A4553" style="width:150px;"/>
+					</div>
+					<span class="col-lg-1"></span>
+					<div class="input-group input-grop-md"  style="margin-bottom:35px;margin-left:20px;" >
+						<span class="input-group-addon" style="background-color:grey;color:white;padding:3px">Phone number</span>
+						<input type="text" class="form-control input-md input_field" id="phone_number" placeholder="3105551212" style="width:130px;"/>
+					</div>
+					<div class="input-group input-grop-md" style="margin-bottom:25px;margin-left:20px;">
+						<span class="input-group-addon" style="background-color:grey;color:white;padding:3px">Password</span>
+						<input type="Password" class="form-control input-md input_field"  id="password" placeholder="type password" style="width:130px;"/>
+					</div>
+					<span class="col-lg-1"></span>
+					<div class="input-group input-grop-md"  style="margin-bottom:25px;margin-left:20px;" >
+						<span class="input-group-addon" style="background-color:grey;color:white;padding:3px">confirm password</span>
+						<input type="password" class="form-control input-md input_field" id="password2" placeholder="type password again" style="width:130px;"/>
+					</div>
+					<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5"></span>
+					<input type="button" class="btn btn-large btn-success submit" id="submit_registration" value="Submit" name="submit">
+				</form>
+			</div>
+			<!-- Modal Body -->
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="javascripts/index_manipulation.js"></script>
+<script src="javascripts/jquery.md5.js"></script>
+<script src="javascripts/jquery.session.js"></script>
+<script src= "http://127.0.0.1:8080/socket.io/socket.io.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</html>
+

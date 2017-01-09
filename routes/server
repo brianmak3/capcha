@@ -1,0 +1,44 @@
+var express = require('express');
+var router = express.Router();
+var mongo = require('mongodb').MongoClient;
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+    res.render('index', {
+
+    });
+});
+
+//connection of the db
+var app = express();
+var http = require('http').Server();
+client = require('socket.io').listen(8080).sockets;
+mongo.connect('mongodb://127.0.0.1/users',function(err, db){
+    if(err) throw err;
+client.on('connection',function(socket)
+{
+    var reg_users = db.collection('users_register');
+    socket.on('register_user',function(data){
+        var user_name = data.user_name,
+            first_name = data.first_name,
+            last_name = data.last_name,
+            email = data.email,
+            work_id = data.work_id,
+            phone_number = data.phone_number,
+            password = data.password,
+            time = data.time,
+            date = data.date
+            reg_users.insert({user_name: user_name, first_name: first_name, last_name:last_name, email: email, work_id:work_id, phone_number:phone_number, password:password, time: time, date:date}, function(){
+            console.log('inserted');
+                 });
+
+         });
+    // get user_login
+    reg_users.find().limit(1000000).sort({_id: 1}).toArray(function(err, res){
+        if(err) throw err;
+        socket.emit('get_user', res);
+    });
+    });
+
+});
+
+module.exports = router;
